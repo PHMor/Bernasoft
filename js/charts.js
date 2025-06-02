@@ -167,3 +167,23 @@ function criarGraficoFabricantes(produtos) {
         }
     });
 }
+
+let currentFontSize = parseFloat(getComputedStyle(document.body).fontSize) || 16;
+      const minFontSize = 10;
+      const maxFontSize = 26;
+    
+      document.getElementById('increase-font').addEventListener('click', () => {
+        if (currentFontSize < maxFontSize) {
+          currentFontSize += 2;
+          if (currentFontSize > maxFontSize) currentFontSize = maxFontSize;
+          document.body.style.fontSize = currentFontSize + 'px';
+        }
+      });
+  
+      document.getElementById('decrease-font').addEventListener('click', () => {
+        if (currentFontSize > minFontSize) {
+          currentFontSize -= 2;
+          if (currentFontSize < minFontSize) currentFontSize = minFontSize;
+          document.body.style.fontSize = currentFontSize + 'px';
+        }
+      });
