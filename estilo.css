@@ -845,7 +845,3 @@ canvas {
   .font-buttons button:hover {
     background-color: #2980b9;
   }
-body {
-  font-size: 16px;
-  transition: font-size 0.3s; 
-}
