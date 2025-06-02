@@ -366,3 +366,17 @@ btnstatus.addEventListener('click', function(){
 })
 
 console.log(categorias,produtos)
+
+const btninfo = document.getElementById('infobtn1')
+const infobox = document.getElementById('infobox')
+
+btninfo.addEventListener('mouseover',function(){
+    console.log('bernardao')
+    infobox.style.visibility = 'visible'
+    infobox.style.opacity = '1'
+})
+
+btninfo.addEventListener('mouseout',function(){
+    infobox.style.visibility = 'hidden'
+    infobox.style.opacity = '0'
+})
