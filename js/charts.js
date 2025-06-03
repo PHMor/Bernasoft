@@ -161,7 +161,8 @@ function criarGraficoInventario(inventarios) {
         fill: false,
         tension: 0.4,
         pointRadius: 5,
-        pointBackgroundColor: cores[index % cores.length]
+        pointBackgroundColor: cores[index % cores.length],
+        spanGaps: true // Adicionado para conectar linhas com valores faltantes
     }));
 
     new Chart(ctx, {
@@ -216,15 +217,16 @@ function processarDadosInventarioPorModelo(inventarios) {
     const datasets = [];
     const modelos = {};
 
-    const datasOrdenadas = Object.keys(inventarios).sort((a, b) => {
-        return new Date(a) - new Date(b);
-    });
+    // Extrair e ordenar datas
+    const datasOrdenadas = Object.keys(inventarios).sort((a, b) => new Date(a) - new Date(b));
 
+    // Criar labels formatadas
     datasOrdenadas.forEach(dataKey => {
         const [ano, mes, dia] = dataKey.split('-');
         labels.push(`${dia}/${mes}/${ano.slice(2)}`);
     });
 
+    // Inicializar estrutura para todos os modelos encontrados
     datasOrdenadas.forEach(dataKey => {
         const inventario = inventarios[dataKey];
         const nomeModelo = inventario.nome || 'Desconhecido';
@@ -232,14 +234,20 @@ function processarDadosInventarioPorModelo(inventarios) {
         if (!modelos[nomeModelo]) {
             modelos[nomeModelo] = {
                 label: nomeModelo,
-                data: new Array(datasOrdenadas.length).fill(null)
+                data: new Array(datasOrdenadas.length).fill(0) // Inicializa com 0 em vez de null
             };
         }
-        
-        const index = labels.indexOf(`${dataKey.split('-')[2]}/${dataKey.split('-')[1]}/${dataKey.split('-')[0].slice(2)}`);
-        modelos[nomeModelo].data[index] = parseInt(inventario.qnt);
     });
 
+    // Preencher os dados
+    datasOrdenadas.forEach((dataKey, index) => {
+        const inventario = inventarios[dataKey];
+        const nomeModelo = inventario.nome || 'Desconhecido';
+        
+        modelos[nomeModelo].data[index] = parseInt(inventario.qnt) || 0;
+    });
+
+    // Converter objeto em array
     for (const nomeModelo in modelos) {
         datasets.push(modelos[nomeModelo]);
     }
