@@ -23,11 +23,11 @@
             </section>
         </header>
 
-        <div id="infobox" style="left: 775px;">
+        <div id="infobox" style="left: 775px;"> <!--Menu suspenso inicialmente invisivel-->
             <p>Faça o registo de inventário utilizando as informações de cadastro de máquina. É possível visualizar gráficos de inventários no menu de relatórios.</p>
         </div>
 
-        <aside class="sidebar">
+        <aside class="sidebar"> <!--Menu lateral com acesso as outras paginas-->
             <nav>
                 <ul>
                     <li><a href="inicio.html"><button><i class="fas fa-home"></i>Inicio</button></a></li>
@@ -40,7 +40,7 @@
 
         <section class="conteudo">
 
-            <div id="conteudo2">
+            <div id="conteudo2"> <!--Conteudo principal da pagina para fazer o inventario-->
                 <div id="Titulo" style="color: #191c3c; margin: 20px 0px">
                     <h1>Inventário</h1>
                     <p style="color: rgb(102, 102, 102); font-size:14px">Registre um inventário</p>
@@ -56,7 +56,7 @@
                             <th>Quantidade</th>
                         </tr>
                         </thead>
-                        <tbody id="inventidades">
+                        <tbody id="inventidades"> <!--Tabela com os inputs de dados do inventario-->
                             <tr>
                                 <td><input type="date" class="inputdados" id="datainv"></td>
                                 <td><select name="maquinasel" id="maquinasel" class="inputdados">
@@ -67,7 +67,7 @@
                         </tbody>
 
                     </table>
-                    <p style="color: red; margin-top: 10px; display:none" id="erromsg">É preciso preencher todos os campos para enviar!</p>
+                    <p style="color: red; margin-top: 10px; display:none" id="erromsg">É preciso preencher todos os campos para enviar!</p> <!--Mensagem de erro-->
                     <button class="salvar" style="margin-top: 20px;" id="enviarinv">Enviar inventário</button>
                 </div>
 
@@ -76,13 +76,13 @@
         </section>
 
     </main>
-    
-    <div class="font-buttons">
+     
+    <div class="font-buttons"> <!--Botões de amuentar e diminuir fonte para acessibilidade-->
         <button id="increase-font">A+</button>
         <button id="decrease-font">A-</button>
         </div>
     
-        <script>
+        <script> //Script separado do funcionamento dos botoes de aumentar e diminuir fonte
           let currentFontSize = parseFloat(getComputedStyle(document.body).fontSize) || 16;
           const minFontSize = 13;
           const maxFontSize = 26;

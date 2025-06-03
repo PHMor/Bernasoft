@@ -15,18 +15,18 @@
 <body>
 
 <main class="container">
-        <header>
+        <header> <!--Cabeçalho-->
             <img src="assets/imagens/logo.png" alt="">
             <section class="cabeca"><i class="fa-solid fa-chevron-left"></i><h1>Máquina</h1>
             <button class="info" id="infobtn1">Como usar</button>
             </section>
         </header>
 
-        <div id="infobox">
+        <div id="infobox"> <!--Menu suspenso que é por padrao invisivel-->
             <p>Crie e gerencie suas maquinas e categorias. Clique em adicionar categoria para criar e editar. É possível acessar o menu de cadastro no botão "Cadastrar máquinas". Na lista de máquinas criadas é possível editar individualmente clicando nos três pontinhos na lateral.</p>
         </div>
 
-        <aside class="sidebar">
+        <aside class="sidebar"> <!--Menu lateral com acesso as outras telas-->
             <nav>
                 <ul>
                     <li><a href="inicio.html"><button><i class="fas fa-home"></i>Inicio</button></a></li>
@@ -43,7 +43,7 @@
             <div id="backgroundbox" class="boxsuspensa">
             <div class="novoprodbox">
                 <i class="fa-solid fa-xmark" id="fechar"></i>
-                <div class="entupldimg">
+                <div class="entupldimg"> <!--espaço do preview da imagem e escolha-->
                     <div id="moldura">
                         <img id="preview" src="" alt="" style="display: none;"/>
                     </div>
@@ -57,7 +57,7 @@
                                     <p style="color: rgb(102, 102, 102); font-size:15px" id="msgmodelo">Crie modelo novo</p>
                             </div>
                     <input type="text" name="" id="nome" placeholder="Nome*" class="inputdados">
-                    <div class="mensagem-erro"></div>
+                    <div class="mensagem-erro"></div> <!--Div de mensagem de erro-->
                     <br>
                     <input type="text" name="" id="modelo" placeholder="Modelo*" class="inputdados">
                     <div class="mensagem-erro"></div>
@@ -98,7 +98,7 @@
                             <div id="catbox2">
                             <div id="catboxtabela">
                                 <h1 style="color: #191c3c; margin-bottom: 10px">Categorias existentes</h1>
-                                <table>
+                                <table> <!--Tabela de categorias, o JS preenche ela com os dados já salvos no localstorage-->
                                     <thead>
                                         <tr>
                                             <th>Nome da categoria</th>
@@ -117,7 +117,7 @@
                                     <h1 style="color: #191c3c; margin-bottom: 10px">Criar nova categoria</h1>
                                 </div>
                                 <input type="text" name="" id="Nomecat" class="inputdados" style="width: 600px;" placeholder="Nome da categoria*">
-                                <p style="color: red;" id ="msgerro"></p>
+                                <p style="color: red;" id ="msgerro"></p> <!--Mensagem de erro do cadastro das categorias-->
                                 <button class="salvar" id="salvarcat">Salvar</button>
                             </div>
                             </div>
@@ -164,7 +164,7 @@
                     </div>
                     <div id="entidades3">
 
-<table>
+<table> <!--Tabela de produtos vazia, é preenchid pelo JS com os dados do localstorage-->
     <thead>
       <tr>
         <th>Maquina</th>
@@ -189,12 +189,12 @@
 
     </main>
 
-    <div class="font-buttons">
+    <div class="font-buttons"><!--Botões de amuentar e diminuir fonte para acessibilidade-->
         <button id="increase-font">A+</button>
         <button id="decrease-font">A-</button>
         </div>
     
-        <script>
+        <script> //Script separado do funcionamento dos botoes de aumentar e diminuir fonte
           let currentFontSize = parseFloat(getComputedStyle(document.body).fontSize) || 16;
           const minFontSize = 13;
           const maxFontSize = 26;
