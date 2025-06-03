@@ -1,25 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Carrega dados do LocalStorage
     const produtosData = JSON.parse(localStorage.getItem('produtos')) || [];
     const categoriasData = JSON.parse(localStorage.getItem('categorias')) || [];
     const inventariosData = JSON.parse(localStorage.getItem('inventarios')) || {};
-    
-    // Filtra dados
+
     const produtosAtivos = produtosData.filter(p => !p.excluido);
     const categoriasAtivas = categoriasData.filter(cat => !cat.includes("(Excluido)"));
-    
-    // Cria os 4 gráficos
+
     criarGraficoFabricantes(produtosAtivos);
     criarGraficoStatus(produtosData);
     criarGraficoCategorias(produtosAtivos, categoriasAtivas);
     criarGraficoInventario(inventariosData);
 });
 
-// 1. Gráfico de Rosca - Distribuição por Fabricante
 function criarGraficoFabricantes(produtos) {
     const ctx = document.getElementById('grafico1').getContext('2d');
-    
-    // Conta produtos por fabricante
+
     const fabricantes = {};
     produtos.forEach(p => {
         if (p.fabricantev) {
@@ -64,7 +59,6 @@ function criarGraficoFabricantes(produtos) {
     });
 }
 
-// 2. Gráfico de Barras - Status das Máquinas
 function criarGraficoStatus(produtos) {
     const ctx = document.getElementById('grafico2').getContext('2d');
     
@@ -104,11 +98,9 @@ function criarGraficoStatus(produtos) {
     });
 }
 
-// 3. Gráfico de Pizza - Distribuição por Categoria
 function criarGraficoCategorias(produtos, categorias) {
     const ctx = document.getElementById('grafico3').getContext('2d');
-    
-    // Conta produtos por categoria
+
     const contagem = {};
     categorias.forEach(cat => {
         contagem[cat] = produtos.filter(p => p.cat === cat).length;
@@ -151,11 +143,9 @@ function criarGraficoCategorias(produtos, categorias) {
     });
 }
 
-// 4. Gráfico de Linha - Inventário Diário (VALORES DIRETOS)
 function criarGraficoInventario(inventarios) {
     const ctx = document.getElementById('grafico4').getContext('2d');
-    
-    // Processa os dados de inventário
+
     const { labels, valores } = processarDadosInventario(inventarios);
     
     new Chart(ctx, {
@@ -188,7 +178,7 @@ function criarGraficoInventario(inventarios) {
                             const data = context.label;
                             const qnt = context.raw;
                             const nome = inventarios[formatarDataParaKey(data)]?.nome || 'Desconhecido';
-                            return `${nome}: ${qnt} máquina(s)`;
+                            return `${nome}: ${qnt} Produto(s)`;
                         }
                     }
                 }
