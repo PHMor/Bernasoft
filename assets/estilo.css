@@ -702,13 +702,11 @@ canvas {
     padding: 20px;
 }
 
-
 .titulo-boas-vindas {
     font-size: 2.5rem;
     color: #3b82f6;
     margin-bottom: 20px;
 }
-
 
 .mensagem-inicial {
     font-size: 1.2rem;
@@ -717,16 +715,14 @@ canvas {
     margin-bottom: 40px;
 }
 
-
 .botoes-acoes {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: center;
     gap: 20px;
     margin-top: 30px;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px; /* Increased to accommodate three buttons */
 }
-
 
 .botao-acao {
     background: white;
@@ -740,24 +736,27 @@ canvas {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    flex: 1; /* Makes buttons grow equally to fill space */
+    min-width: 0; /* Allows flex items to shrink */
 }
-
 
 .botao-acao:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-
 .botao-acao i {
     font-size: 2rem;
     color: #3b82f6;
 }
 
-
 .botao-acao h3 {
     margin: 0;
     color: #333;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds ... if text is too long */
+    width: 100%;
 }
 
 #invbox1 {
