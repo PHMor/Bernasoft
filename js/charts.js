@@ -146,41 +146,47 @@ function criarGraficoCategorias(produtos, categorias) {
 function criarGraficoInventario(inventarios) {
     const ctx = document.getElementById('grafico4').getContext('2d');
 
-    const { labels, valores } = processarDadosInventario(inventarios);
-    
+    const { labels, datasets } = processarDadosInventarioPorModelo(inventarios);
+    const cores = [
+        '#9C27B0', '#3F51B5', '#009688', '#FF5722', '#607D8B',
+        '#E91E63', '#2196F3', '#4CAF50', '#FFC107', '#795548'
+    ];
+
+    const chartDatasets = datasets.map((dataset, index) => ({
+        label: dataset.label,
+        data: dataset.data,
+        borderColor: cores[index % cores.length],
+        backgroundColor: 'rgba(0, 0, 0, 0)', 
+        borderWidth: 3,
+        fill: false,
+        tension: 0.4,
+        pointRadius: 5,
+        pointBackgroundColor: cores[index % cores.length]
+    }));
+
     new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
-            datasets: [{
-                label: 'Quantidade Inventariada',
-                data: valores,
-                borderColor: '#9C27B0',
-                backgroundColor: 'rgba(156, 39, 176, 0.1)',
-                borderWidth: 3,
-                fill: true,
-                tension: 0.4,
-                pointRadius: 5,
-                pointBackgroundColor: '#9C27B0'
-            }]
+            datasets: chartDatasets
         },
         options: {
             responsive: true,
             plugins: {
                 title: {
                     display: true,
-                    text: 'Inventário Diário de Máquinas',
+                    text: 'Inventário Diário de Máquinas por Modelo',
                     font: { size: 16 }
                 },
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            const data = context.label;
-                            const qnt = context.raw;
-                            const nome = inventarios[formatarDataParaKey(data)]?.nome || 'Desconhecido';
-                            return `${nome}: ${qnt} Produto(s)`;
+                            return `${context.dataset.label}: ${context.raw} Produto(s)`;
                         }
                     }
+                },
+                legend: {
+                    position: 'top',
                 }
             },
             scales: {
@@ -205,28 +211,43 @@ function criarGraficoInventario(inventarios) {
     });
 }
 
-// Funções auxiliares para o gráfico de inventário
-function processarDadosInventario(inventarios) {
+function processarDadosInventarioPorModelo(inventarios) {
     const labels = [];
-    const valores = [];
-    
-    // Ordena as datas cronologicamente
+    const datasets = [];
+    const modelos = {};
+
     const datasOrdenadas = Object.keys(inventarios).sort((a, b) => {
         return new Date(a) - new Date(b);
     });
-    
-    // Prepara os dados para o gráfico
+
     datasOrdenadas.forEach(dataKey => {
         const [ano, mes, dia] = dataKey.split('-');
         labels.push(`${dia}/${mes}/${ano.slice(2)}`);
-        valores.push(parseInt(inventarios[dataKey].qnt));
     });
+
+    datasOrdenadas.forEach(dataKey => {
+        const inventario = inventarios[dataKey];
+        const nomeModelo = inventario.nome || 'Desconhecido';
+        
+        if (!modelos[nomeModelo]) {
+            modelos[nomeModelo] = {
+                label: nomeModelo,
+                data: new Array(datasOrdenadas.length).fill(null)
+            };
+        }
+        
+        const index = labels.indexOf(`${dataKey.split('-')[2]}/${dataKey.split('-')[1]}/${dataKey.split('-')[0].slice(2)}`);
+        modelos[nomeModelo].data[index] = parseInt(inventario.qnt);
+    });
+
+    for (const nomeModelo in modelos) {
+        datasets.push(modelos[nomeModelo]);
+    }
     
-    return { labels, valores };
+    return { labels, datasets };
 }
 
 function formatarDataParaKey(dataDisplay) {
-    // Converte de DD/MM/AA para YYYY-MM-DD
     const [dia, mes, ano] = dataDisplay.split('/');
     return `20${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
 }
