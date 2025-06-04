@@ -10,13 +10,13 @@
   - https://phmor.github.io/Bernasoft/
 
 ## 🗒️ Instruções de uso
-  1. Acesse o link da aplicação hospedada no github pages.
+1. Acesse o link da aplicação hospedada no github pages.
      
-  2. Navegação:
+2. Navegação:
 -Ínicio: A página de ínicio te serve para te direcionar entre as outras abas do software.
 -Máquinas: Aba para criar categorias e fazer o cadastro de nivas máquinas, a página também conta com um botão de "Como usar", que trás instruções de uso mais detalhadas.
 -Inventário: Aba de cadastro de novos produtos, feita para ser usada após o cadstro de maquinas, além disso a página também possui um botão de instruções.
 -Relatórios: Aba de gráficos responsivos conectados ao localstorage, construindo um dashboard mais agradavél.
 
-  3. Uso prático:
+3. Uso prático:
 -Agora que as instruções de uso já foram passadas, você já está pronto para usar o software, em caso de outras duvidas o botão "Como usar" na parte superior da tela pode sanar suas duvidas.
