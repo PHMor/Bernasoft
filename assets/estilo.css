@@ -839,7 +839,7 @@ canvas {
     background-color: white;
     position: fixed;
     top: 25px;
-    left: 725px;
+    left: 900px;
     z-index: 99999999;
     box-shadow: 2px 2px 8px 3px rgba(0, 0, 0, 0.3);
     transition: .5s;
@@ -864,7 +864,7 @@ canvas {
     background-color: white;
     position: fixed;
     top: 25px;
-    left: 725px;
+    left: 855px;
     z-index: 99999999;
     box-shadow: 2px 2px 8px 3px rgba(0, 0, 0, 0.3);
     transition: .5s;

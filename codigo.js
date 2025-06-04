@@ -12,7 +12,6 @@ class produto { //Construção da classe dos produtos
     }
 }
 
-
 //Parte do codigo que pega os dados que estão salvos no localstorage.
 const prodsdados = localStorage.getItem('produtos');
 const catdados = localStorage.getItem('categorias');
@@ -409,7 +408,3 @@ btninfo.addEventListener('mouseout',function(){
     infobox.style.visibility = 'hidden'
     infobox.style.opacity = '0'
 })
-
-//acessibilidade
-document.querySelector('.fa-chevron-left').closest('button').addEventListener('click',function(){window.location.href = 'inicio.html';console.log('bernardo')});
-//fim
