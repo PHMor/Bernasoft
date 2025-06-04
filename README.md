@@ -20,16 +20,3 @@
 
 - Uso prático:
   * Agora que as instruções de uso já foram passadas, você já está pronto para usar o software, em caso de outras duvidas o botão "Como usar" na parte superior da tela pode sanar suas duvidas.
-
-
-## 🗂️ Estrutura do site 🗂️
-
-  ├── assets/
-  │   ├── imagens/  
-  │   │   └── logo.png 
-  │   └── css/
-  │       └── estilo.css  
-  ├── perfil.html  
-  ├── index.html  
-  └── README.md 
-  
