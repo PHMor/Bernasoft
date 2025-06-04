@@ -905,3 +905,19 @@ canvas {
   .font-buttons button:hover {
     background-color: #2980b9;
   }
+
+/* Acessibilidade */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+    outline: 3px solid #ff0000;
+    outline-offset: 2px;
+}
+
+
+#botaosel:focus {
+    outline: 3px solid #ff0000;
+    outline-offset: 2px;
+}
