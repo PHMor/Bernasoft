@@ -24,12 +24,12 @@
 
 ## 🗂️ Estrutura do site 🗂️
 
-``├── assets/`` 
-``│   ├── imagens/ `` 
-``│   │   └── logo.png `` 
-``│   └── css/``  
+  ├── assets/
+  │   ├── imagens/  
+  │   │   └── logo.png 
+  │   └── css/
   │       └── estilo.css  
   ├── perfil.html  
   ├── index.html  
-  └── README.md ``
+  └── README.md 
   
