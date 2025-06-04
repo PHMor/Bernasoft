@@ -6,8 +6,9 @@
 - Sistema de armazenamento: Localstorage.
 - Bibliotecas externas: ChartJS para criação de gráficos.
 
-## 🌐 Link da hospedagem
+## 🌐 Link da hospedagem e do vídeo de apresentação no youtube
   - https://phmor.github.io/Bernasoft/
+  - https://youtu.be/l_PUO1aZCN4?si=soqj9no2AjHsyQjj
 
 ## 🗒️ Instruções de uso
 - Acesse o link da aplicação hospedada no github pages.
