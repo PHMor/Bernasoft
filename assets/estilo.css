@@ -921,3 +921,27 @@ a:focus {
     outline: 3px solid #ff0000;
     outline-offset: 2px;
 }
+
+header button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 20px 30px;
+        background-color:white;
+        border: none;
+        color: royalblue;
+        font-size: 30px;
+        font-weight: 500;
+        cursor: pointer;
+        width: 200px;
+        height: 100%;
+        justify-content: center;
+        text-decoration: none;
+        border-left: 5px solid royalblue;
+        transition: .5s;
+}
+
+header button:hover {
+    background-color:aliceblue;
+    border-left: 10px solid royalblue;
+}
