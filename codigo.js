@@ -409,3 +409,7 @@ btninfo.addEventListener('mouseout',function(){
     infobox.style.visibility = 'hidden'
     infobox.style.opacity = '0'
 })
+
+//acessibilidade
+document.querySelector('.fa-chevron-left').closest('button').addEventListener('click',function(){window.location.href = 'inicio.html';console.log('bernardo')});
+//fim
