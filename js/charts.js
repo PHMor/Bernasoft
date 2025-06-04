@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     criarGraficoCategorias(produtosAtivos, categoriasAtivas);
     criarGraficoInventario(inventariosData);
 });
-//Gráfico 1 (Gráfico de rosoquinha sobre a distribuição por fabricante das maquinas)
+//Gráfico 1 (Gráfico de rosquinha sobre a distribuição por fabricante das maquinas)
 function criarGraficoFabricantes(produtos) {
     const ctx = document.getElementById('grafico1').getContext('2d');//Selecionando o id do gráfico que está presente no html
     //Puxando os dados dos fabricantes
