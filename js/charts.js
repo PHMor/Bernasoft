@@ -1,27 +1,29 @@
+
 document.addEventListener('DOMContentLoaded', function() {
+    //Puxando as informações do localstorage
     const produtosData = JSON.parse(localStorage.getItem('produtos')) || [];
     const categoriasData = JSON.parse(localStorage.getItem('categorias')) || [];
     const inventariosData = JSON.parse(localStorage.getItem('inventarios')) || {};
-
+    //Filtrando o que foi excluído ou não do localstorage
     const produtosAtivos = produtosData.filter(p => !p.excluido);
     const categoriasAtivas = categoriasData.filter(cat => !cat.includes("(Excluido)"));
-
+    //Criando os Gráficos
     criarGraficoFabricantes(produtosAtivos);
     criarGraficoStatus(produtosData);
     criarGraficoCategorias(produtosAtivos, categoriasAtivas);
     criarGraficoInventario(inventariosData);
 });
-
+//Gráfico 1 (Gráfico de rosoquinha sobre a distribuição por fabricante das maquinas)
 function criarGraficoFabricantes(produtos) {
-    const ctx = document.getElementById('grafico1').getContext('2d');
-
+    const ctx = document.getElementById('grafico1').getContext('2d');//Selecionando o id do gráfico que está presente no html
+    //Puxando os dados dos fabricantes
     const fabricantes = {};
     produtos.forEach(p => {
         if (p.fabricantev) {
             fabricantes[p.fabricantev] = (fabricantes[p.fabricantev] || 0) + 1;
         }
     });
-
+    //Montando o gráfico com informações de tipo, cor e título, usando as informações fornecidas pelo localstorage
     new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -59,6 +61,7 @@ function criarGraficoFabricantes(produtos) {
     });
 }
 
+//Gráfico 2 (Quantidade de maquinas ativas, inativas e excluídas)
 function criarGraficoStatus(produtos) {
     const ctx = document.getElementById('grafico2').getContext('2d');
     
@@ -98,6 +101,7 @@ function criarGraficoStatus(produtos) {
     });
 }
 
+//Criação do terceiro gráfico (Gráfico de torta sobre a distribuição de categorias)
 function criarGraficoCategorias(produtos, categorias) {
     const ctx = document.getElementById('grafico3').getContext('2d');
 
@@ -143,6 +147,7 @@ function criarGraficoCategorias(produtos, categorias) {
     });
 }
 
+//Criação do quarto gráfico (Gráfico dos produtos do inventário)
 function criarGraficoInventario(inventarios) {
     const ctx = document.getElementById('grafico4').getContext('2d');
 
@@ -162,7 +167,7 @@ function criarGraficoInventario(inventarios) {
         tension: 0.4,
         pointRadius: 5,
         pointBackgroundColor: cores[index % cores.length],
-        spanGaps: true // Adicionado para conectar linhas com valores faltantes
+        spanGaps: true 
     }));
 
     new Chart(ctx, {
@@ -212,6 +217,7 @@ function criarGraficoInventario(inventarios) {
     });
 }
 
+
 function processarDadosInventarioPorModelo(inventarios) {
     const labels = [];
     const datasets = [];
@@ -234,7 +240,7 @@ function processarDadosInventarioPorModelo(inventarios) {
         if (!modelos[nomeModelo]) {
             modelos[nomeModelo] = {
                 label: nomeModelo,
-                data: new Array(datasOrdenadas.length).fill(0) // Inicializa com 0 em vez de null
+                data: new Array(datasOrdenadas.length).fill(0)
             };
         }
     });
