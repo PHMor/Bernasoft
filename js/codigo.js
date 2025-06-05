@@ -91,7 +91,7 @@ enviar.addEventListener('click', function() {
         editarmaq = null;
     } else {
         if(img == null){
-            img = "maquinagenerica.png"
+            img = "assets/imagens/maquinagenerica.png"
         }
     const prod = new produto(img,nomev,precov,cat,fabricantev,descricaov,modelov,statusv,false)
     produtos.push(prod)}

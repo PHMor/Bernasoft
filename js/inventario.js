@@ -26,7 +26,7 @@ console.log(produtos)
 const selecionarprod = document.getElementById('maquinasel')
 produtos.forEach(maquina => {
     console.log(maquina.status)
-    if(maquina.status == 'Inativo'){
+    if(maquina.status == 'Inativo' || maquina.excluido == true){
 
     }else{
     const maqopcao = document.createElement('option');
