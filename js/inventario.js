@@ -85,5 +85,14 @@ btnenviarinv.addEventListener('click', function() {
     inputqnt.value = '';
 });
 
+const btninfo = document.getElementById('infobtn1')
+const infobox = document.getElementById('infobox')
+
+btninfo.addEventListener('mouseover',function(){
+    console.log('bernardao')
+    infobox.style.visibility = 'visible'
+    infobox.style.opacity = '1'
+})
+
 /*Realizando a função do botão voltar ao início da página*/
 document.querySelector('.fa-chevron-left').closest('button').addEventListener('click',function(){window.location.href = 'inicio.html';});
