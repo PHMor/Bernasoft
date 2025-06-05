@@ -382,3 +382,6 @@ btninfo.addEventListener('mouseout',function(){
     infobox.style.visibility = 'hidden'
     infobox.style.opacity = '0'
 })
+
+/*Realizando a função do botão voltar ao início da página*/
+document.querySelector('.fa-chevron-left').closest('button').addEventListener('click',function(){window.location.href = 'inicio.html';});

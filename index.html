@@ -18,7 +18,7 @@
         <header> <!--Cabeçalho-->
             <img src="assets/imagens/logo.png" alt="">
             <!--Acessibilidade-->
-            <section class="cabeca"><button aria-label="Voltar" title="Voltar para início" href="inicio.html"><i class="fa-solid fa-chevron-left"></i></button><h1>Máquina</h1>
+            <section class="cabeca"><button aria-label="Voltar" title="Voltar para início"><i class="fa-solid fa-chevron-left"></i></button><h1>Máquina</h1>
             <!--Fim-->
             <button class="info" id="infobtn1">Como usar</button>
             </section>
@@ -190,6 +190,54 @@
         </section>
 
     </main>
+
+<!--Acessibilidade-->
+    <script>
+    /*Administrando categorias*/
+    document.getElementById('salvarcat').addEventListener('click', () => {
+  const nomeCat = document.getElementById('Nomecat').value.trim();
+
+  if (!nomeCat) {
+    alert('Por favor, insira o nome da categoria.');
+    return;
+  }
+
+  alert('Nova categoria criada!');
+});
+
+/*Cadastrando máquina*/
+document.getElementById('enviar').addEventListener('click', () => {
+  const nome = document.getElementById('nome').value.trim();
+  const modelo = document.getElementById('modelo').value.trim();
+  const fabricante = document.getElementById('fabricante').value.trim();
+  const preco = document.getElementById('preco').value.trim();
+  const categoria = document.getElementById('categoria').value;
+
+  if (!nome) {
+    alert('Por favor, insira o nome da máquina.');
+    return;
+  }
+  if (!modelo) {
+    alert('Por favor, insira o modelo da máquina.');
+    return;
+  }
+  if (!fabricante) {
+    alert('Por favor, insira o fabricante da máquina.');
+    return;
+  }
+  if (!preco || isNaN(preco)) {
+    alert('Por favor, insira um preço válido.');
+    return;
+  }
+  if (!categoria) {
+    alert('Por favor, selecione uma categoria.');
+    return;
+  }
+  alert('Máquina cadastrada com sucesso!');
+});
+
+    </script>
+<!--Fim-->
 
     <div class="font-buttons"><!--Botões de amuentar e diminuir fonte para acessibilidade-->
         <button id="increase-font">A+</button>

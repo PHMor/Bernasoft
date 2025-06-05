@@ -265,3 +265,6 @@ function formatarDataParaKey(dataDisplay) {
     const [dia, mes, ano] = dataDisplay.split('/');
     return `20${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
 }
+
+/*Realizando a função do botão voltar ao início da página*/
+document.querySelector('.fa-chevron-left').closest('button').addEventListener('click',function(){window.location.href = 'inicio.html';});

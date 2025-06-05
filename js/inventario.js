@@ -57,39 +57,33 @@ btnenviarinv.addEventListener('click', function() {
     let vdata = inputdata.value;
     let vmaq = inputmaq.value;
     let vqnt = inputqnt.value;
-    if(vdata == "" || vmaq == "" || vqnt == ""){
-        msgerro.innerText = 'É preciso preencher todos os campos para enviar!'
-        msgerro.style.display = 'block'
+
+    if (!vdata) {
+        alert('Por favor, selecione uma data.');
+        inputdata.focus();
+        return;
     }
-    else {
-    inventarios[vdata] = {'nome': vmaq, 'qnt':vqnt}
-    console.log(inventarios)
-    localStorage.setItem('inventarios',JSON.stringify(inventarios))
-    inputmaq.value = '';
+    if (!vmaq) {
+        alert('Por favor, selecione uma máquina.');
+        inputmaq.focus();
+        return;
+    }
+    if (!vqnt || vqnt <= 0) {
+        alert('Por favor, insira uma quantidade válida.');
+        inputqnt.focus();
+        return;
+    }
+
+    inventarios[vdata] = {'nome': vmaq, 'qnt': vqnt};
+    console.log(inventarios);
+    localStorage.setItem('inventarios', JSON.stringify(inventarios));
+
+    alert('Inventário registrado com sucesso!');
+    
     inputdata.value = '';
+    inputmaq.value = '';
     inputqnt.value = '';
-    msgerro.innerText = 'Inventário registrado com sucesso!'
-    msgerro.style.color = 'royalblue'
-    msgerro.style.display = 'block'
-    setTimeout(() => {
-        msgerro.style.display = 'none'
-        msgerro.innerText = 'É preciso preencher todos os campos para enviar!'
-        msgerro.style.color = 'red'
-    }, 5000);
-    }
 });
 
-const btninfo = document.getElementById('infobtn1')
-const infobox = document.getElementById('infobox')
-
-btninfo.addEventListener('mouseover',function(){
-    console.log('bernardao')
-    infobox.style.visibility = 'visible'
-    infobox.style.opacity = '1'
-})
-
-btninfo.addEventListener('mouseout',function(){
-    infobox.style.visibility = 'hidden'
-    infobox.style.opacity = '0'
-})
-
+/*Realizando a função do botão voltar ao início da página*/
+document.querySelector('.fa-chevron-left').closest('button').addEventListener('click',function(){window.location.href = 'inicio.html';});
